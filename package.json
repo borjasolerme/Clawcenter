@@ -1,0 +1,31 @@
+{
+  "name": "clawcenter",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev --webpack --port 3030",
+    "build": "next build --webpack",
+    "start": "next start --port 3030",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "smoke:browser": "node scripts/smoke-browser.mjs"
+  },
+  "dependencies": {
+    "@heroui/react": "latest",
+    "@tailwindcss/postcss": "latest",
+    "@xyflow/react": "^12.10.2",
+    "framer-motion": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
+  }
+}
