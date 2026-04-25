@@ -1,5 +1,9 @@
 # Clawcenter
 
+![Clawcenter](public/screenshots/clawcenter-hero.png)
+
+---
+
 Control base for OpenClaw.
 
 An Onwork project.
