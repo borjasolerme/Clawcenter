@@ -27,11 +27,13 @@ The goal is not to replace OpenClaw. OpenClaw runs the agents. Clawcenter gives 
 
 ## Screenshots
 
-The screenshots below use fake data.
+The screenshots below use anonymized sample workspace data.
 
-![Clawcenter agents org chart](public/screenshots/org-chart.svg)
+![Clawcenter agents org chart](public/screenshots/org-chart.png)
 
-![Clawcenter schedules page](public/screenshots/schedules.svg)
+![Clawcenter schedules page](public/screenshots/schedules.png)
+
+![Clawcenter activity page](public/screenshots/activity.png)
 
 ## Features
 
@@ -52,18 +54,45 @@ The screenshots below use fake data.
 - Light and dark mode using HeroUI defaults.
 - Responsive layout for desktop and mobile.
 
-## Quickstart
+## Getting Started
+
+Clawcenter is a local UI for an existing OpenClaw installation. It expects OpenClaw state to already exist on your machine.
+
+1. Clone the repository:
 
 ```bash
-cd ~/clawcenter
+git clone https://github.com/borjasolerme/Clawcenter.git
+cd Clawcenter
+```
+
+2. Install dependencies:
+
+```bash
 npm install
+```
+
+3. Make sure OpenClaw is available:
+
+```bash
+openclaw --help
+```
+
+4. Start Clawcenter:
+
+```bash
 npm run dev
 ```
 
-Then open:
+5. Open the app:
 
 ```text
 http://localhost:3030
+```
+
+If your OpenClaw config is not in the default location, point Clawcenter to it before starting:
+
+```bash
+OPENCLAW_CONFIG_PATH=/path/to/openclaw.json npm run dev
 ```
 
 ## Requirements

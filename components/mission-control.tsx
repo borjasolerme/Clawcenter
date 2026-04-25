@@ -169,6 +169,7 @@ const workspaceNav: { id: Section; label: string; icon: SidebarIconName }[] = [
   { id: "skills", label: "Skills", icon: "skills" },
   { id: "activity", label: "Activity", icon: "activity" },
 ];
+const sectionIds = new Set<Section>(workspaceNav.map((item) => item.id));
 
 type SidebarIconName = "overview" | "schedules" | "files" | "skills" | "activity";
 
@@ -310,6 +311,13 @@ export function MissionControl() {
   }, [refreshAll]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+    if (params.get("screenshot") === "1") setAutoRefresh(false);
+    if (isSection(section)) setActiveSection(section);
+  }, []);
+
+  useEffect(() => {
     if (!autoRefresh) return;
     const timer = window.setInterval(() => void refreshAll(false), 15_000);
     return () => window.clearInterval(timer);
@@ -425,7 +433,12 @@ export function MissionControl() {
       autoRefresh={autoRefresh}
       onAutoRefreshChange={setAutoRefresh}
       onRefresh={() => void refreshAll()}
-      onSectionChange={setActiveSection}
+      onSectionChange={(section) => {
+        setActiveSection(section);
+        const url = new URL(window.location.href);
+        url.searchParams.set("section", section);
+        window.history.replaceState(null, "", url);
+      }}
     >
           {activeSection === "overview" ? (
           <Overview
@@ -499,6 +512,10 @@ export function MissionControl() {
           ) : null}
     </MissionShell>
   );
+}
+
+function isSection(value: string | null): value is Section {
+  return Boolean(value && sectionIds.has(value as Section));
 }
 
 function MissionShell({
